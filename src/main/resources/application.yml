@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: booster-web-server
+  liquibase:
+    change-log: db/changelog.xml
+  datasource:
+    url: jdbc:postgresql://localhost:5455/booster_web_server
+    username: root
+    password: pass
+#  config:
+#    import: optional:classpath:.env[.properties]
+
+server:
+  port: 8090
+
+logging:
+  level:
+    booster.webserver: DEBUG
