@@ -1,1 +1,2 @@
 add a Dockerfile
+add a spring config server when there are more configurations and a DB-aware app and Postgre are already running in k8s
