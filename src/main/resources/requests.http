@@ -1,0 +1,12 @@
+###
+POST http://localhost:8090/vocabulary-entry
+Content-Type: application/json
+
+{
+  "name": "Onset",
+  "description": "Who cares",
+  "synonyms": [
+    "Bugaga",
+    "Uga Buga"
+  ]
+}
