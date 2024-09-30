@@ -1,2 +1,4 @@
 add a Dockerfile
 add a spring config server when there are more configurations and a DB-aware app and Postgre are already running in k8s
+chapter 6.4 with publishing the release candidate
+remote debugger of the docker container

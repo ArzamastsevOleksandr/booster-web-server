@@ -1,7 +1,21 @@
 services:
+
+  booster-web-server:
+    depends_on:
+      - booster-web-server-db
+    image: "booster-web-server"
+    container_name: "booster-web-server"
+    ports:
+      - "8090:8090"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://booster-web-server-db:5432/booster_web_server
+    networks:
+      - booster-network
+
   booster-web-server-db:
     command: postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.track=all -c max_connections=50
     image: postgres:latest
+    container_name: "booster-web-server-db"
     restart: always
     environment:
       - POSTGRES_DB=booster_web_server
@@ -9,14 +23,9 @@ services:
       - POSTGRES_PASSWORD=pass
     ports:
       - '5455:5432'
-    volumes:
-      - ./booster-web-server-db:/var/lib/postgresql/data
     networks:
-      - booster-web-server-network
-volumes:
-  booster-web-server-db:
-    driver: local
+      - booster-network
 
 networks:
-  booster-web-server-network:
-    name: booster-web-server-network
+  booster-network:
+    name: booster-network

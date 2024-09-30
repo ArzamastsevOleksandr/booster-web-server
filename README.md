@@ -39,7 +39,7 @@ postgres:latest
 ```
 
 ```bash
-docker run --rm --name booster-web-server --net booster-web-server-network -p 8090:8090 -e SPRING_DATASOURCE_URL=jdbc:postgresql://booster-web-server-db:5432/booster_web_server booster-web-server:0.0.1-SNAPSHOT  
+docker run --rm --name booster-web-server --net booster-network -p 8090:8090 -e SPRING_DATASOURCE_URL=jdbc:postgresql://booster-web-server-db:5432/booster_web_server booster-web-server:0.0.1-SNAPSHOT  
 ```
 
 ```bash
@@ -67,3 +67,14 @@ kubectl expose deployment booster-web-server --name=booster-web-server --port=80
 ```bash
 kubectl port-forward service/booster-web-server 8090:8090
 ```
+
+
+todo:
+stop all containers: docker stop $(docker ps -a -q)
+remove all containers: docker rm $(docker ps -a -q)
+
+Steps to run the app as a docker container:
+1. Start the postgre container
+2. Build the jar: `./gradlew clean bootJar`
+3. Build the docker image of the app: `docker build -t booster-web-server .`
+4. `docker run --rm --name booster-web-server --net booster-network -p 8090:8090 -e SPRING_DATASOURCE_URL=jdbc:postgresql://booster-web-server-db:5432/booster_web_server booster-web-server`

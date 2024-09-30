@@ -1,4 +1,7 @@
 ###
+GET http://localhost:8090/demo
+
+###
 POST http://localhost:8090/vocabulary-entry
 Content-Type: application/json
 
